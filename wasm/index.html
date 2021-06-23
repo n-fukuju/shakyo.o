@@ -22,7 +22,7 @@
             var btn = document.getElementById('btn');
             btn.addEventListener('click', (evt)=>{
                 // console.log('phpModule: ', php);
-                let ret = phpModule.ccall('pib_eval', 'number', ["string"], ['echo "xxx"']);
+                let ret = php.ccall('pib_eval', 'number', ["string"], ['echo "xxx"']);
                 if(ret != 0){
                     console.log('err:', ret);
                 }
