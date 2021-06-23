@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="php-web.js"></script>
     </head>
     <body>
+        <script type="text/javascript" src="php-web.js"></script>
         <script type="text/javascript">
             var options = {
-                print: (text)=>{ console.log(text); },
-                printErr: (text)=>{ console.log(text); }
+                // print: (text)=>{ console.log(text); },
+                // printErr: (text)=>{ console.log(text); }
             };
             var phpModule = PHP(options);
+            console.log(phpModule);
             let ret = phpModule.ccall('pib_eval', 'number', ['string'], ['echo "xxx"']);
             if(ret != 0){
                 console.log('err:', ret);
