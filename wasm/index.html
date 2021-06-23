@@ -3,27 +3,29 @@
     <head>
     </head>
     <body>
-        <button id="btn"></button>
+        <button id="btn">button</button>
         <script type="text/javascript" src="php-web.js"></script>
         <script type="text/javascript">
             var options = {
                 // print: (text)=>{ console.log(text); },
                 // printErr: (text)=>{ console.log(text); }
             };
-            var phpModule;
+            var php;
             PHP(options).then((result)=>{
-                phpModule = result;
-                console.log('promise complete.');
+                php = result;
+                console.log('PHP() promise complete.');
+                console.log('php: ', php);
             });
-            console.log('phpModule: ', phpModule);
+            // console.log('phpModule: ', php);
             
             var btn = document.getElementById('btn');
             btn.addEventListener('click', (evt)=>{
-                console.log('phpModule: ', phpModule);
-                let ret = phpModule.ccall('pib_eval', 'number', ['string'], ['echo "xxx"']);
-                if(ret != 0){
-                    console.log('err:', ret);
-                }
+                // console.log('phpModule: ', php);
+                // let ret = php.ccall('pib_eval', 'number', ['string'], ['echo "xxx"']);
+                // if(ret != 0){
+                    // console.log('err:', ret);
+                // }
+                php.run('<?php echo "Hello.";');
             });
         </script>
     </body>
