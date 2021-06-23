@@ -11,6 +11,7 @@
                 // printErr: (text)=>{ console.log(text); }
             };
             var php;
+            console.log('PHP() start.')
             PHP(options).then((result)=>{
                 php = result;
                 console.log('PHP() promise complete.');
@@ -27,6 +28,11 @@
                 // }
                 php.run('<?php echo "Hello.";');
             });
+        </script>
+        <script type="text/php">
+            <?php
+                $console->log('log from text/php');
+            ?>
         </script>
     </body>
 </html>
