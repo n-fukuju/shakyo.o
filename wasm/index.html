@@ -4,14 +4,16 @@
         <script src="php-web.js"></script>
     </head>
     <body>
-        var options = {
-            print: (text)=>{ console.log(text); },
-            printErr: (text)=>{ console.log(text); }
-        };
-        var phpModule = PHP(options);
-        let ret = phpModule.ccall('pib_eval', 'number', ['string'], ['echo "xxx"']);
-        if(ret != 0){
-            console.log('err:', ret);
-        }
+        <script type="text/javascript">
+            var options = {
+                print: (text)=>{ console.log(text); },
+                printErr: (text)=>{ console.log(text); }
+            };
+            var phpModule = PHP(options);
+            let ret = phpModule.ccall('pib_eval', 'number', ['string'], ['echo "xxx"']);
+            if(ret != 0){
+                console.log('err:', ret);
+            }
+        </script>
     </body>
 </html>
