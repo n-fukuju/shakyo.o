@@ -9,7 +9,7 @@
                 // print: (text)=>{ console.log(text); },
                 // printErr: (text)=>{ console.log(text); }
             };
-            var phpModule = PHP(options);
+            var phpModule = await PHP(options);
             console.log(phpModule);
             let ret = phpModule.ccall('pib_eval', 'number', ['string'], ['echo "xxx"']);
             if(ret != 0){
