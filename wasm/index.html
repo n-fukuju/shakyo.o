@@ -10,7 +10,11 @@
                 // print: (text)=>{ console.log(text); },
                 // printErr: (text)=>{ console.log(text); }
             };
-            var phpModule = PHP(options);
+            var phpModule;
+            PHP(options).then((result)=>{
+                phpModule = result;
+                console.log('promise complete.');
+            });
             console.log('phpModule: ', phpModule);
             
             var btn = document.getElementById('btn');
