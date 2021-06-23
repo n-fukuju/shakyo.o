@@ -5,7 +5,7 @@
     <body>
         <button id="btn">button</button>
         <script type="text/javascript" src="php-web.js"></script>
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
             var options = {
                 // print: (text)=>{ console.log(text); },
                 // printErr: (text)=>{ console.log(text); }
@@ -28,10 +28,18 @@
                 }
                 php.run('<?php echo "Hello.";');
             });
-        </script>
+        </script> -->
+        <script>require('initialize');</script>
         <script type="text/php">
             <?php
-                $console->log('log from text/php');
+                $window = new \Vrzno;
+                $console = $window->console;
+                $document = $window->document;
+                $b = $document->getElementById('btn');
+                $b->addEventListener('click', function(){
+                    vrzno_run('alert', ['php-wasm']);
+                });
+                $console->log('php loaded.');
             ?>
         </script>
     </body>
