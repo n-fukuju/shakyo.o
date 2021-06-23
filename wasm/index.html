@@ -3,21 +3,24 @@
     <head>
     </head>
     <body>
+        <button id="btn"></button>
         <script type="text/javascript" src="php-web.js"></script>
         <script type="text/javascript">
             var options = {
                 // print: (text)=>{ console.log(text); },
                 // printErr: (text)=>{ console.log(text); }
             };
-            var phpModule;
-            (async ()=>{
-                phpModule = await PHP(options);
-            })();
-            console.log(phpModule);
-            let ret = phpModule.ccall('pib_eval', 'number', ['string'], ['echo "xxx"']);
-            if(ret != 0){
-                console.log('err:', ret);
-            }
+            var phpModule = PHP(options);
+            console.log('phpModule: ', phpModule);
+            
+            var btn = document.getElementById('btn');
+            btn.addEventListener('click', (evt)=>{
+                console.log('phpModule: ', phpModule);
+                let ret = phpModule.ccall('pib_eval', 'number', ['string'], ['echo "xxx"']);
+                if(ret != 0){
+                    console.log('err:', ret);
+                }
+            });
         </script>
     </body>
 </html>
