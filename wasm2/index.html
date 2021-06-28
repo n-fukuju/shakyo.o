@@ -20,13 +20,13 @@
             run_button.textContent = "Run"
             run_button.addEventListener('click', function () {
                 // var code = editor.getValue();
-                var code = '<?php \n\n echo "pbi.";\n';
+                var code = default_code;
                 code = code.replace(/^\s*<\?php/, "") // remove <?php
                 code = code + "\necho PHP_EOL;" // flush line buffer
                 let ret = phpModule.ccall('pib_eval', 'number', ["string"], [code])
                 if (ret != 0) {
                     // output_area.write("Error, please check your code")
-                    console.log('error rfrom phpModule.');
+                    console.log('error from php.ccall')
                 }
             });
         }
