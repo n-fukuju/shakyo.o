@@ -1,17 +1,53 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en-us">
+
 <head>
     <meta charset="utf-8">
+    <title>PIB: PHP in Browser</title>
 </head>
+
 <body>
-    <button id="button">button</button>
+    <button id="run" disabled>Loading...</button>
     <script type="text/javascript" src="php.js"></script>
-    <script>
-        var phpModule = PHP({});
-        document.getElementById('button').addEventListener('click', ()=>{
-            let ret = phpModule.ccall('pib_eval', 'number', ["string"], ['echo "php";\n echo PHP_EOL;']);
-        });
-        console.log('phpModule: ', phpModule);
+    <script type='text/javascript'>
+
+        var default_code = "<?php\n\nphpinfo();\n"
+        var run_button = document.getElementById('run');
+        var phpModule;
+
+        function init() {
+            run_button.disabled = false
+            run_button.textContent = "Run"
+            run_button.addEventListener('click', function () {
+                // var code = editor.getValue();
+                var code = '<?php \n\n echo "pbi.";\n';
+                code = code.replace(/^\s*<\?php/, "") // remove <?php
+                code = code + "\necho PHP_EOL;" // flush line buffer
+                let ret = phpModule.ccall('pib_eval', 'number', ["string"], [code])
+                if (ret != 0) {
+                    // output_area.write("Error, please check your code")
+                    console.log('error rfrom phpModule.');
+                }
+            });
+        }
+
+        var phpModuleOptions = {
+            postRun: [init],
+            // print: function (text) {
+            //     if (arguments.length > 1) {
+            //         text = Array.prototype.slice.call(arguments).join(' ');
+            //     }
+            //     output_area.write(text)
+            // },
+            // printErr: function (text) {
+            //     if (arguments.length > 1) {
+            //         text = Array.prototype.slice.call(arguments).join(' ');
+            //     }
+            //     output_area.write(text)
+            // }
+        };
+        phpModule = PHP(phpModuleOptions);
     </script>
 </body>
+
 </html>
