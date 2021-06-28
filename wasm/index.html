@@ -22,10 +22,10 @@
             var btn = document.getElementById('btn');
             btn.addEventListener('click', (evt)=>{
                 // console.log('phpModule: ', php);
-                let ret = php.ccall('pib_eval', 'number', ["string"], ['echo "xxx";\n echo PHP_EOL;']);
-                if(ret != 0){
-                    console.log('err:', ret);
-                }
+                // let ret = php.ccall('pib_eval', 'number', ["string"], ['echo "xxx";\n echo PHP_EOL;']);
+                // if(ret != 0){
+                //     console.log('err:', ret);
+                // }
                 php.run('<?php echo "Hello pib.";\n PHP_EOL;');
             });
         </script>
